@@ -1,59 +1,71 @@
-const BASE_URL =
-  "https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies";
 
-const dropdowns = document.querySelectorAll(".dropdown select");
-const btn = document.querySelector("form button");
-const fromCurr = document.querySelector(".from select");
-const toCurr = document.querySelector(".to select");
-const msg = document.querySelector(".msg");
 
-for (let select of dropdowns) {
-  for (currCode in countryList) {
-    let newOption = document.createElement("option");
-    newOption.innerText = currCode;
-    newOption.value = currCode;
-    if (select.name === "from" && currCode === "USD") {
-      newOption.selected = "selected";
-    } else if (select.name === "to" && currCode === "INR") {
-      newOption.selected = "selected";
+
+let dropdown = document.querySelectorAll(".dropdown select")
+let btn = document.querySelector(".submit button")
+let from_curr = document.querySelector(".from select");
+let to_curr = document.querySelector(".to select");
+let msg = document.querySelector(".msg")
+for (let select of dropdown) {
+    for (let currcode in countryList) {
+        let options = document.createElement("option");
+        if (select.name === "from_curr" && currcode === "USD") {
+            options.selected = "selected";
+        }
+        else if (select.name === "to_curr" && currcode === "INR") {
+            options.selected = "selected"
+        }
+
+        options.innerText = currcode;
+        options.value = currcode;
+
+        select.append(options);
+
+
+
     }
-    select.append(newOption);
-  }
+    select.addEventListener("change", (evt) => {
+        changeflag(evt.target)
+    })
 
-  select.addEventListener("change", (evt) => {
-    updateFlag(evt.target);
-  });
 }
 
-const updateExchangeRate = async () => {
-  let amount = document.querySelector(".amount input");
-  let amtVal = amount.value;
-  if (amtVal === "" || amtVal < 1) {
-    amtVal = 1;
-    amount.value = "1";
+const changeflag = (element) => {
+    let currcode = element.value;
+    let countrycode = countryList[currcode];
+    let new_src = `https://flagsapi.com/${countrycode}/flat/64.png`;
+    let img = element.parentElement.querySelector("img")
+    img.src = new_src;
+};
+
+btn.addEventListener("click", async (evt) => {
+    evt.preventDefault();
+    let amount = document.querySelector(".amount input")
+    let amount_val = amount.value;
+    console.log(amount_val);
+    if (amount_val === "" || amount_val < 1) {
+        amount_val = 1;
+        amount.value = "1"
+    }
+
+    console.log(from_curr.value, to_curr.value)
+  try{  let url = `https://api.frankfurter.app/latest?amount=${amount_val}&from=${from_curr.value}&to=${to_curr.value}`;
+
+    let response = await fetch(url);
+
+    let data = await response.json();
+    let rate = data.rates[to_curr.value]
+
+    let final_rate = rate * amount_val;     
+
+    msg.innerText = `${amount_val} ${from_curr.value} = ${final_rate} ${to_curr.value}`;
+    msg.style.color= "green"
+    console.log(final_rate);
   }
-  const URL = `${BASE_URL}/${fromCurr.value.toLowerCase()}/${toCurr.value.toLowerCase()}.json`;
-  let response = await fetch(URL);
-  let data = await response.json();
-  let rate = data[toCurr.value.toLowerCase()];
+  catch(err){
+    msg.innerText= "this currency not supported bhai"
+    msg.style.color ="red"
+  }
+})
 
-  let finalAmount = amtVal * rate;
-  msg.innerText = `${amtVal} ${fromCurr.value} = ${finalAmount} ${toCurr.value}`;
-};
 
-const updateFlag = (element) => {
-  let currCode = element.value;
-  let countryCode = countryList[currCode];
-  let newSrc = `https://flagsapi.com/${countryCode}/flat/64.png`;
-  let img = element.parentElement.querySelector("img");
-  img.src = newSrc;
-};
-
-btn.addEventListener("click", (evt) => {
-  evt.preventDefault();
-  updateExchangeRate();
-});
-
-window.addEventListener("load", () => {
-  updateExchangeRate();
-});
