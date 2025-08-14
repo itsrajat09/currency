@@ -4,8 +4,10 @@
 let dropdown = document.querySelectorAll(".dropdown select")
 let btn = document.querySelector(".submit button")
 let from_curr = document.querySelector(".from select");
-let to_curr = document.querySelector(".to select");
+let to_curr = document.querySelector(".to select")
 let msg = document.querySelector(".msg")
+let reverse_btn = document.querySelector(".reverse_btn")
+
 for (let select of dropdown) {
     for (let currcode in countryList) {
         let options = document.createElement("option");
@@ -59,13 +61,25 @@ btn.addEventListener("click", async (evt) => {
     let final_rate = rate * amount_val;     
 
     msg.innerText = `${amount_val} ${from_curr.value} = ${final_rate} ${to_curr.value}`;
-    msg.style.color= "green"
+
     console.log(final_rate);
   }
   catch(err){
-    msg.innerText= "this currency not supported bhai"
+    msg.innerText= "Currency not supported bhai"
     msg.style.color ="red"
+    
   }
 })
+
+reverse_btn.addEventListener("click", ()=>{
+   let tempVal = from_curr.value;
+    from_curr.value = to_curr.value;
+    to_curr.value = tempVal;
+    changeflag(from_curr)
+    changeflag(to_curr)
+
+})
+
+
 
 
