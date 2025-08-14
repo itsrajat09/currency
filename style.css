@@ -101,6 +101,8 @@ select{
 }
 i{
   cursor:pointer;
+  position:relative;
+  top:15px;
 }
 
 img {
@@ -125,7 +127,7 @@ button:hover{
   display :flex;
   margin:10px;
   position:relative;
-  right:30px;
+  right:10px;
   font-weight:900;
 font-size:30px;
 color:#000000;
