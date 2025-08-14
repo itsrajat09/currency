@@ -1,10 +1,12 @@
 * {
   padding: 0px;
   margin: 0px;
-  color:black
+  color:black;
+ 
 }
 body {
-  background-color: #ECECBB;
+
+   background-color:black;
 }
 h1 {
   
@@ -19,8 +21,8 @@ h1 {
   align-items: center;
 }
 .backcolor{
-  padding:40px;
-  background-color:#F2F2F2;
+  padding:20px;
+  background-color:#08CB00;
   height:500px;
   display:flex;
   flex-direction: column;
@@ -55,10 +57,13 @@ input {
   width: 100px;
   border-radius: 7px;
   border: solid grey 1px;
+ 
+  background-color:#FEE8D9;
 }
 .dropdown_con {
   height: 100px;
   width: 150px;
+  
   
 }
 .from{
@@ -80,13 +85,20 @@ input {
 }
 select{
    cursor:pointer;
+    border-radius:10px;
+    background-color:#C1D8C3
 }
 .exchange{
   display:flex;
   justify-content: center;
   align-items: center;
   position:relative;
-  margin:60px
+  margin:60px;
+  cursor:pointer;
+  
+}
+i{
+  cursor:pointer;
 }
 
 img {
@@ -98,18 +110,27 @@ button{
   height:40px;
   border-radius:10px;
   border:solid grey 1px;
-  background-color:#7ADAA5;
+  background-color:#EEEEEE;
+  display:flex;
+  justify-content:center;
   cursor:pointer;
+
+}
+button:hover{
+  box-shadow:5px 5px 9px  blue;
 }
 .msg{
   display :flex;
   margin:10px;
   font-weight:900;
 font-size:30px;
+color:#000000;
   
 }
 .btn{
  display:flex;
   justify-content: center;
   align-items:center;
+  position:relative;
+  left:60px;
 }
