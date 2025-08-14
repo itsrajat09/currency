@@ -1,85 +1,142 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  color:black;
+ 
+}
+body {
 
-
-
-let dropdown = document.querySelectorAll(".dropdown select")
-let btn = document.querySelector(".submit button")
-let from_curr = document.querySelector(".from select");
-let to_curr = document.querySelector(".to select")
-let msg = document.querySelector(".msg")
-let reverse_btn = document.querySelector(".reverse_btn")
-
-for (let select of dropdown) {
-    for (let currcode in countryList) {
-        let options = document.createElement("option");
-        if (select.name === "from_curr" && currcode === "USD") {
-            options.selected = "selected";
-        }
-        else if (select.name === "to_curr" && currcode === "INR") {
-            options.selected = "selected"
-        }
-
-        options.innerText = currcode;
-        options.value = currcode;
-
-        select.append(options);
-
-
-
-    }
-    select.addEventListener("change", (evt) => {
-        changeflag(evt.target)
-    })
+   background-color:black;
+}
+h1 {
+  
+  text-align: center;
+  position:relative;
+  right:27px;
+}
+.container {
+  height: 100vh;
+  width:100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.backcolor{
+  padding:20px;
+  background-color:#08CB00;
+  height:500px;
+  display:flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-radius:20px;
+  width:350px;
+  font-size:22px;
 
 }
+.amount {
 
-const changeflag = (element) => {
-    let currcode = element.value;
-    let countrycode = countryList[currcode];
-    let new_src = `https://flagsapi.com/${countrycode}/flat/64.png`;
-    let img = element.parentElement.querySelector("img")
-    img.src = new_src;
-};
+  padding: 30px;
+  
+}
+input {
 
-btn.addEventListener("click", async (evt) => {
-    evt.preventDefault();
-    let amount = document.querySelector(".amount input")
-    let amount_val = amount.value;
-    console.log(amount_val);
-    if (amount_val === "" || amount_val < 1) {
-        amount_val = 1;
-        amount.value = "1"
-    }
+  outline:none;
+  border-radius: 4px;
+  height:30px;
+  width:300px;
+  margin:-30px;
+}
+.select_con {
+ 
+  margin: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  width: 100px;
+  border-radius: 7px;
+  border: solid grey 1px;
+ 
+  background-color:#FEE8D9;
+}
+.dropdown_con {
+  height: 100px;
+  width: 150px;
+  
+  
+}
+.from{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.to{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dropdown{
+  display:flex;
 
-    console.log(from_curr.value, to_curr.value)
-  try{  let url = `https://api.frankfurter.app/latest?amount=${amount_val}&from=${from_curr.value}&to=${to_curr.value}`;
+  justify-content: space-evenly;
+  width:400px;
+  height:80px;
+}
+select{
+   cursor:pointer;
+    border-radius:10px;
+    background-color:#C1D8C3
+}
+.exchange{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  margin:40px;
+  cursor:pointer;
+  
+}
+i{
+  cursor:pointer;
+  position:relative;
+  top:15px;
+}
 
-    let response = await fetch(url);
+img {
+  width: 45px;
+  border-radius: 18px;
+}
+button{
+  font-size:30px;
+  height:40px;
+  border-radius:10px;
+  border:solid grey 1px;
+  background-color:#EEEEEE;
+  display:flex;
+  justify-content:center;
+  cursor:pointer;
 
-    let data = await response.json();
-    let rate = data.rates[to_curr.value]
-
-    let final_rate = rate * amount_val;     
-
-    msg.innerText = `${amount_val} ${from_curr.value} = ${final_rate} ${to_curr.value}`;
-
-    console.log(final_rate);
-  }
-  catch(err){
-    msg.innerText= "Currency not supported bhai"
-    msg.style.color ="red"
-    
-  }
-})
-
-reverse_btn.addEventListener("click", ()=>{
-   let tempVal = from_curr.value;
-    from_curr.value = to_curr.value;
-    to_curr.value = tempVal;
-    changeflag(from_curr)
-    changeflag(to_curr)
-
-})
-
-
-
-
+}
+button:hover{
+  box-shadow:5px 5px 9px  blue;
+}
+.msg{
+  display :flex;
+  margin:10px;
+  position:relative;
+  right:10px;
+  font-weight:900;
+font-size:30px;
+color:#000000;
+  
+}
+.btn{
+ display:flex;
+  justify-content: center;
+  align-items:center;
+  position:relative;
+  left:45px;
+}
