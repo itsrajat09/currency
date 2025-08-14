@@ -11,6 +11,8 @@ body {
 h1 {
   
   text-align: center;
+  position:relative;
+  right:27px;
 }
 .container {
   height: 100vh;
@@ -30,7 +32,7 @@ h1 {
   align-items: center;
   justify-content: center;
   border-radius:20px;
-  width:400px;
+  width:350px;
   font-size:22px;
 
 }
@@ -93,7 +95,7 @@ select{
   justify-content: center;
   align-items: center;
   position:relative;
-  margin:60px;
+  margin:40px;
   cursor:pointer;
   
 }
@@ -132,5 +134,6 @@ color:#000000;
   justify-content: center;
   align-items:center;
   position:relative;
-  left:60px;
+  left:45px;
 }
+
