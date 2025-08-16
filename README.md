@@ -1,10 +1,10 @@
  # Currency Converter
 
-A simple and interactive currency converter web app that lets users convert amounts between multiple international currencies.
+Developed a Currency Converter Web Application using JavaScript, HTML, and CSS with real-time exchange rates from the Frankfurter API.
 
-Select source and target currencies with country flags.
-Uses live exchange rates via Frankfurter API.
-No API key needed, quick and easy conversion!.
-Built with HTML, CSS, and JavaScript.
+Implemented dynamic flag updates, reverse currency selection, and custom animated loader for enhanced user experience.
 
+Ensured robust error handling for invalid inputs and API failures, improving reliability and usability.
+
+Optimized UI responsiveness by integrating asynchronous API calls and smooth loading animations.
 Feel free to fork, improve, or contribute!
