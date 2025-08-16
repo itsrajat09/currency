@@ -74,7 +74,7 @@ if(amount_val ==="" || amount_val <0){
         msg.classList.remove("hidden")
     },500)
 
- msg.innerText ="ye Currency tune suna hai";
+ msg.innerText ="Currency Not Supported";
  msg.style.color = "red"
  }
 })
