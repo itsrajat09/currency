@@ -93,4 +93,3 @@ if(amount_val ==="" || amount_val <0){
  msg.style.color = "red"
  }
 })
-
