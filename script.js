@@ -6,6 +6,21 @@ let btn = document.querySelector( ".submit button")
 let amount = document.querySelector(".amount input")
 let msg = document.querySelector(".msg")
 let loader = document.querySelector("#loader")
+let darkmode = document.querySelector("#darkmode")
+let con = document.querySelector(".container")
+
+darkmode.addEventListener("click",()=>{
+    if(con.style.backgroundColor==="white"){
+        darkmode.innerText="Light Mode"
+        con.style.backgroundColor="black";
+        
+    } else {
+        darkmode.innerText="Dark Mode"
+        con.style.backgroundColor="white"
+        
+    }
+})
+
 for (let select of dropdown) {
     for (let currcode in countryList) {
 
@@ -74,7 +89,7 @@ if(amount_val ==="" || amount_val <0){
         msg.classList.remove("hidden")
     },500)
 
- msg.innerText ="Currency Not Supported";
+ msg.innerText ="ye Currency tune suna hai";
  msg.style.color = "red"
  }
 })
