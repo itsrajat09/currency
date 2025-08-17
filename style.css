@@ -2,11 +2,6 @@
   padding: 0px;
   margin: 0px;
   color:black;
- 
-}
-body {
-
-   background-color:black;
 }
 h1 {
   
@@ -15,6 +10,7 @@ h1 {
   right:27px;
 }
 .container {
+     background-color:black;
   height: 100vh;
   width:100vw;
   display: flex;
@@ -174,4 +170,14 @@ color:#000000;
   align-items: center;
   position:relative;
   right:30px;
+}
+#darkmode{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  right:30px;
+  bottom:40px;
+  font-size:20px;
+  border-radius: 10px;
 }
